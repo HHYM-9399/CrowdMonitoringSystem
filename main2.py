@@ -11,7 +11,7 @@ from ultralytics.utils.files import increment_path
 from ultralytics.utils.plotting import Annotator, colors
 from ultralytics.solutions import heatmap
 
-from flask import Flask, render_template_string, request, session
+from flask import Flask, render_template_string, request
 from flask import send_from_directory
 import shutil
 import os
