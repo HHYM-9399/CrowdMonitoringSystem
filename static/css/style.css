@@ -1,0 +1,689 @@
+
+/* Resets */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline:0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    text-decoration: none;
+}
+
+/* Font */
+
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #293044;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #293044;
+
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #293044;
+    
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.12px;
+    text-transform: uppercase;
+    color: #445072;
+}
+
+hr {
+    width: 100%;
+    background: #445072;
+    opacity: 0.3;
+    border-width: 0px 0px 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 0;
+}
+
+.bold {
+    color: #293044;
+    font-weight: 600;
+}
+
+.color-bold {
+    color: #2f60ce;
+    font-weight: 600;
+}
+
+/* Form */
+
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* 1 */
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 7px 12px;
+    cursor: pointer;
+    border: 1px solid #CBD5E0;
+    border-radius: 5px;
+    color: #2f60ce;
+}
+
+.custom-file-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-upload span {
+    font-size: 20px;
+    color: #2f60ce;
+    margin-right: 10px;
+}
+
+.custom-upload-button {
+    width: 100%;
+    display: block;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ffffff;
+    background: #2f60ce;
+    margin-top: 15px;
+}
+
+.custom-upload-button span {
+    font-size: 20px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/* Body */
+
+body {
+    background: #f9f7f6;
+    color: #445072;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.nav {
+    width: calc((100%/12) * 4);
+    height: 100vh;
+    position: relative;
+    float: left;
+    padding: 30px 20px;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    /* background: #293044; */
+    z-index: 20;
+    box-shadow: 0 12px 20px rgba(109,109,109,.2);
+}
+
+
+.nav::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.main {
+    width: calc((100%/12) * 8);
+    height: 100vh;
+    position: relative;
+    float: left;
+    background: #212121;
+}
+
+.logo {
+    max-width: 120px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.nav-top {
+    margin-bottom: 10px;
+}
+
+.nav-middle {
+    margin-top: 20px;
+}
+
+.nav-bottom {
+    margin-top:30px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.choose-file {
+    margin-bottom: 20px;
+}
+
+.icon {
+    font-size: 30px;
+    color: #445072;
+}
+
+.icon-text {
+    margin-left: 10px;
+}
+
+.video-type {
+    width: fit-content;
+    block-size: fit-content;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    background: #f6f7fc;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: 0 12px 20px rgba(109,109,109,.2);
+}
+
+.main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.slidecontainer {
+    width: 100%;
+    z-index: 1;
+}
+
+.slidecontainer p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.slidecontainer #demo, .slidecontainer #demo1 {
+    margin-left: 5px;
+}
+
+.slidecontainer .material-symbols-outlined {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #E2E8F0;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    z-index: -10;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #05e3ab;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #05e3ab;
+    cursor: pointer;
+}
+
+.switches-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 0;
+    position: relative;
+    background: #E2E8F0;
+    line-height: 2.5rem;
+    border-radius: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* input (radio) for toggling. hidden - use labels for clicking on */
+.switches-container input {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+}
+
+/* labels for the input (radio) boxes - something to click on */
+.switches-container label {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #445072;
+    font-size: 14px;
+}
+
+/* switch highlighters wrapper (sliding left / right) 
+    - need wrapper to enable the even margins around the highlight box
+*/
+.switch-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    padding: 3px 3px 2px 3px;
+    z-index: 3;
+    transition: transform .5s cubic-bezier(.77, 0, .175, 1);
+    /* transition: transform 1s; */
+}
+
+/* switch box highlighter */
+.switch {
+    border-radius: 3rem;
+    background: #2f60ce;
+    height: 100%;
+}
+
+/* switch box labels
+    - default setup
+    - toggle afterwards based on radio:checked status 
+*/
+.switch div {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    display: block;
+    color: #ffffff;
+    transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
+    will-change: opacity;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+}
+
+/* slide the switch box from right to left */
+.switches-container input:nth-of-type(1):checked~.switch-wrapper {
+    transform: translateX(0%);
+}
+
+/* slide the switch box from left to right */
+.switches-container input:nth-of-type(2):checked~.switch-wrapper {
+    transform: translateX(100%);
+}
+
+/* toggle the switch box labels - first checkbox:checked - show first switch div */
+.switches-container input:nth-of-type(1):checked~.switch-wrapper .switch div:nth-of-type(1) {
+    opacity: 1;
+}
+
+/* toggle the switch box labels - second checkbox:checked - show second switch div */
+.switches-container input:nth-of-type(2):checked~.switch-wrapper .switch div:nth-of-type(2) {
+    opacity: 1;
+}
+
+.upload-video-form {
+    margin-bottom: 30px;
+}
+
+.upload-live-form {
+    margin-bottom: 30px;
+}
+
+.or-text {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.or-text h4 {
+    position: absolute;
+    background:#f6f7fc;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.uploaded-video {
+    margin-top: 30px;
+}
+
+.uploaded-video p {
+    margin-bottom: 15px;
+}
+
+.small-video {
+    width: calc(100%);
+    aspect-ratio: 16/9;
+    float: left;
+    position: relative;
+}
+
+/* FLOW: RIGHT */
+[tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    transform: translate(.5em, -50%);
+  }
+  [tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    transform: translate(.5em, -50%);
+  }
+
+  /* KEYFRAMES */
+  @keyframes tooltips-vert {
+    to {
+      opacity: .9;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @keyframes tooltips-horz {
+    to {
+      opacity: .9;
+      transform: translate(0, -50%);
+    }
+  }
+
+  /* Tooltips */
+
+  [tooltip] {
+    position: relative; /* opinion 1 */
+  }
+
+  /* Applies to all tooltips */
+  [tooltip]::before,
+  [tooltip]::after {
+    text-transform: none; /* opinion 2 */
+    font-size: .9em; /* opinion 3 */
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    font-family: "Inter", sans-serif;
+  }
+  [tooltip]::before {
+    content: '';
+    border: 5px solid transparent; /* opinion 4 */
+    z-index: 1001; /* absurdity 1 */
+  }
+  [tooltip]::after {
+    content: attr(tooltip); /* magic! */
+
+    /*
+      Let the content set the size of the tooltips
+      but this will also keep them from being obnoxious
+      */
+    min-width: 3em;
+    max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 1ch 1.5ch;
+    border-radius: .3ch;
+    box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+    background: #333;
+    color: #fff;
+    z-index: 1000; /* absurdity 2 */
+  }
+
+  /* Make the tooltips respond to hover */
+  [tooltip]:hover::before,
+  [tooltip]:hover::after {
+    display: block;
+  }
+
+  /* don't show empty tooltips */
+  [tooltip='']::before,
+  [tooltip='']::after {
+    display: none !important;
+  }
+
+  /* FX All The Things */
+  [tooltip]:not([flow]):hover::before,
+  [tooltip]:not([flow]):hover::after,
+  [tooltip][flow^="up"]:hover::before,
+  [tooltip][flow^="up"]:hover::after,
+  [tooltip][flow^="down"]:hover::before,
+  [tooltip][flow^="down"]:hover::after {
+    animation: tooltips-vert 300ms ease-out forwards;
+  }
+
+  [tooltip][flow^="left"]:hover::before,
+  [tooltip][flow^="left"]:hover::after,
+  [tooltip][flow^="right"]:hover::before,
+  [tooltip][flow^="right"]:hover::after {
+    animation: tooltips-horz 300ms ease-out forwards;
+  }
+
+
+
+[data-tooltip] {
+  --arrow-size: 5px;
+  position: relative;
+  z-index: 1001;
+}
+
+/* Positioning and visibility settings of the tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  left: 50%;
+  bottom: calc(100% + var(--arrow-size));
+  pointer-events: none;
+  transition: 0.2s;
+  will-change: transform;
+}
+
+/* The actual tooltip with a dynamic width */
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  padding: 10px 18px;
+  min-width: 50px;
+  max-width: 300px;
+  width: max-content;
+  width: -moz-max-content;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background-color: rgba(59, 72, 80, 0.9);
+  background-image: linear-gradient(30deg,
+    rgba(59, 72, 80, 0.44),
+    rgba(59, 68, 75, 0.44),
+    rgba(60, 82, 88, 0.44));
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  white-space: pre-wrap;
+  transform: translate(-50%,  calc(0px - var(--arrow-size))) scale(0.5);
+}
+
+/* Tooltip arrow */
+[data-tooltip]:after {
+  content: '';
+  border-style: solid;
+  border-width: var(--arrow-size) var(--arrow-size) 0px var(--arrow-size); /* CSS triangle */
+  border-color: rgba(55, 64, 70, 0.9) transparent transparent transparent;
+  transition-duration: 0s; /* If the mouse leaves the element,
+                              the transition effects for the
+                              tooltip arrow are "turned off" */
+  transform-origin: top;   /* Orientation setting for the
+                              slide-down effect */
+  transform: translateX(-50%) scaleY(0);
+}
+
+/* Tooltip becomes visible at hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1;
+}
+/* Scales from 0.5 to 1 -> grow effect */
+[data-tooltip]:hover:before {
+  transition-delay: 0.3s;
+  transform: translate(-50%, calc(0px - var(--arrow-size))) scale(1);
+}
+/*
+  Arrow slide down effect only on mouseenter (NOT on mouseleave)
+*/
+[data-tooltip]:hover:after {
+  transition-delay: 0.5s; /* Starting after the grow effect */
+  transition-duration: 0.2s;
+  transform: translateX(-50%) scaleY(1);
+}
+/*
+  That's it for the basic tooltip.
+
+  If you want some adjustability
+  here are some orientation settings you can use:
+*/
+
+/* LEFT */
+/* Tooltip + arrow */
+[data-tooltip-location="left"]:before,
+[data-tooltip-location="left"]:after {
+  left: auto;
+  right: calc(100% + var(--arrow-size));
+  bottom: 50%;
+}
+
+/* Tooltip */
+[data-tooltip-location="left"]:before {
+  transform: translate(calc(0px - var(--arrow-size)), 50%) scale(0.5);
+}
+[data-tooltip-location="left"]:hover:before {
+  transform: translate(calc(0px - var(--arrow-size)), 50%) scale(1);
+}
+
+/* Arrow */
+[data-tooltip-location="left"]:after {
+  border-width: var(--arrow-size) 0px var(--arrow-size) var(--arrow-size);
+  border-color: transparent transparent transparent rgba(55, 64, 70, 0.9);
+  transform-origin: left;
+  transform: translateY(50%) scaleX(0);
+}
+[data-tooltip-location="left"]:hover:after {
+  transform: translateY(50%) scaleX(1);
+}
+
+
+
+/* RIGHT */
+[data-tooltip-location="right"]:before,
+[data-tooltip-location="right"]:after {
+  left: calc(100% + var(--arrow-size));
+  bottom: 50%;
+}
+
+[data-tooltip-location="right"]:before {
+  transform: translate(var(--arrow-size), 50%) scale(0.5);
+}
+[data-tooltip-location="right"]:hover:before {
+  transform: translate(var(--arrow-size), 50%) scale(1);
+}
+
+[data-tooltip-location="right"]:after {
+  border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0px;
+  border-color: transparent rgba(55, 64, 70, 0.9) transparent transparent;
+  transform-origin: right;
+  transform: translateY(50%) scaleX(0);
+}
+[data-tooltip-location="right"]:hover:after {
+  transform: translateY(50%) scaleX(1);
+}
+
+
+
+/* BOTTOM */
+[data-tooltip-location="bottom"]:before,
+[data-tooltip-location="bottom"]:after {
+  top: calc(100% + var(--arrow-size));
+  bottom: auto;
+}
+
+[data-tooltip-location="bottom"]:before {
+  transform: translate(-50%, var(--arrow-size)) scale(0.5);
+}
+[data-tooltip-location="bottom"]:hover:before {
+  transform: translate(-50%, var(--arrow-size)) scale(1);
+}
+
+[data-tooltip-location="bottom"]:after {
+  border-width: 0px var(--arrow-size) var(--arrow-size) var(--arrow-size);
+  border-color: transparent transparent rgba(55, 64, 70, 0.9) transparent;
+  transform-origin: bottom;
+}
+
+
+[data-tooltip]:after {
+bottom: calc(100% + 3px);
+}
+[data-tooltip]:after {
+border-width: 7px 7px 0px 7px;
+}
+
+
+
+
+
+
+
