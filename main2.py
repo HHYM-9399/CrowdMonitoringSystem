@@ -61,7 +61,7 @@ TPL = '''
 					<div class="switches-container">
 						<input type="radio" id="switchObject" name="switchType" value="Object" checked="checked" />
 						<input type="radio" id="switchHeatmap" name="switchType" value="Heatmap" />
-						<label for="switchObject">Object Detection</label>
+						<label for="switchObject">Object Counting</label>
 						<label for="switchHeatmap">Heatmap</label>
 						<div class="switch-wrapper">
 							<div class="switch">
