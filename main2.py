@@ -488,13 +488,13 @@ def serve_processed_video1():
     return send_from_directory(path, filename)
 
 @app.route('/detect/2CFinalresults.mp4')
-def serve_processed_video1():
+def serve_processed_video2():
     filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
     path = 'detect'
     return send_from_directory(path, filename)
 
 @app.route('/detect/3CFinalresults.mp4')
-def serve_processed_video1():
+def serve_processed_video3():
     filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
     path = 'detect'
     return send_from_directory(path, filename)
