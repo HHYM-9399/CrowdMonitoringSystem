@@ -282,13 +282,11 @@ def runVid(pather, confidence, CCount):
                 for region in counting_regions:
                     if region["polygon"].contains(Point((bbox_center[0], bbox_center[1]))):
                         region["counts"] += 1
-                if region["counts"] > int(CCount):
-                    colorer = (0, 0, 255)
 
         # Draw regions (Polygons/Rectangles)
         for region in counting_regions:
             region_label = str(region["counts"])
-            if region["counts"] > int(CCount):
+            if region["counts"] >= int(CCount):
                 region_color = (0, 0, 255)
             else:
                 region_color = (37, 255, 225)
