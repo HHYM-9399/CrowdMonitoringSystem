@@ -11,7 +11,7 @@ from ultralytics.utils.files import increment_path
 from ultralytics.utils.plotting import Annotator, colors
 from ultralytics.solutions import heatmap
 
-from flask import Flask, render_template_string, request
+from flask import Flask, render_template_string, request, session
 from flask import send_from_directory
 import shutil
 import os
@@ -61,7 +61,7 @@ TPL = '''
 					<div class="switches-container">
 						<input type="radio" id="switchObject" name="switchType" value="Object" checked="checked" />
 						<input type="radio" id="switchHeatmap" name="switchType" value="Heatmap" />
-						<label for="switchObject">Object Counting</label>
+						<label for="switchObject">Object Detection</label>
 						<label for="switchHeatmap">Heatmap</label>
 						<div class="switch-wrapper">
 							<div class="switch">
@@ -452,10 +452,10 @@ def process_video():
         resize('detect/Finalresults.mp4', 0.5, 'detect/CFinalresults.mp4')
 
         if y == 0:
-            processed_video_path = 'detect/CFinalresults.mp4'
+            processed_video_path = 'detect/2CFinalresults.mp4'
             y = 1
         elif y == 1:
-            processed_video_path = 'detect/1CFinalresults.mp4'
+            processed_video_path = 'detect/3CFinalresults.mp4'
             y = 0
 
         return render_template_string(TPL, processed_video_path=processed_video_path)
@@ -482,6 +482,18 @@ def serve_processed_video():
 
 
 @app.route('/detect/1CFinalresults.mp4')
+def serve_processed_video1():
+    filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
+    path = 'detect'
+    return send_from_directory(path, filename)
+
+@app.route('/detect/2CFinalresults.mp4')
+def serve_processed_video1():
+    filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
+    path = 'detect'
+    return send_from_directory(path, filename)
+
+@app.route('/detect/3CFinalresults.mp4')
 def serve_processed_video1():
     filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
     path = 'detect'
