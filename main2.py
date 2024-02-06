@@ -17,6 +17,7 @@ import shutil
 import os
 from pathlib import Path
 
+colorer = (37, 255, 225)
 x = 0
 y = 0
 print(Path.cwd())
@@ -56,20 +57,36 @@ TPL = '''
 		<hr>
 		<div class="nav-middle">
 			<div class="upload-video-form">
-				<h2>Upload Video File</h2>
+				<h2>Choose Detection Type:</h2>
 				<form method="POST" action="/process_video" enctype="multipart/form-data">
 					<div class="switches-container">
 						<input type="radio" id="switchObject" name="switchType" value="Object" checked="checked" />
 						<input type="radio" id="switchHeatmap" name="switchType" value="Heatmap" />
-						<label for="switchObject">Object Detection</label>
+						<label for="switchObject">Object Counting</label>
 						<label for="switchHeatmap">Heatmap</label>
 						<div class="switch-wrapper">
 							<div class="switch">
 							<div>Object Counting</div>
 							<div>Heatmap</div>
 							</div>
-						</div>
-						</div>
+						    </div>
+						    </div>
+						    <div class="slidecontainer">
+                                <p><span class="bold">Crowd Number:</span> <span id="demo2"></span> <span class="material-symbols-outlined" data-tooltip="To select how many people are in a crowd before it becomes too crowded (not available for heatmap)" data-tooltip-location="top">
+                                    help
+                                    </span></p>
+                                <input type="range" min="0" max="125" value="30" class="slider" id="crowded1" name="crowd1">
+                            </div>
+                            <script>
+                                var crowd1 = document.getElementById("crowded1");
+                                var output2 = document.getElementById("demo2");
+                                output2.innerHTML = crowd1.value; // Initialize the value to 0.25
+
+                                crowd1.oninput = function() {
+                                    output2.innerHTML = this.value ; // Adjust the value range to 0.00 to 1.00
+                                }
+                            </script>
+						<h2>Upload Video File</h2>  
 					<label for="file-upload" class="custom-file-upload choose-file">
 						<div class="custom-file-button">
 							<span class="material-symbols-outlined icon">
@@ -185,8 +202,9 @@ TPL = '''
 track_history = defaultdict(list)
 
 
-def runVid(pather, confidence):
+def runVid(pather, confidence, CCount):
     # Setup Model
+    global colorer
     vid_frame_count = 0
 
     # Setup Model
@@ -227,7 +245,7 @@ def runVid(pather, confidence):
             # Polygon points
             "counts": 0,
             "dragging": False,
-            "region_color": (37, 255, 225),  # BGR Value
+            "region_color": colorer,  # BGR Value
             "text_color": (0, 0, 0),  # Region Text Color
         },
     ]
@@ -264,11 +282,16 @@ def runVid(pather, confidence):
                 for region in counting_regions:
                     if region["polygon"].contains(Point((bbox_center[0], bbox_center[1]))):
                         region["counts"] += 1
+                if region["counts"] > int(CCount):
+                    colorer = (0, 0, 255)
 
         # Draw regions (Polygons/Rectangles)
         for region in counting_regions:
             region_label = str(region["counts"])
-            region_color = region["region_color"]
+            if region["counts"] > int(CCount):
+                region_color = (0, 0, 255)
+            else:
+                region_color = (37, 255, 225)
             region_text_color = region["text_color"]
 
             polygon_coords = np.array(region["polygon"].exterior.coords, dtype=np.int32)
@@ -424,7 +447,7 @@ def process_video():
             os.makedirs('detect')
             heatmaper(video_path, request.form.get('slider'))
         elif request.form.get('switchType') == 'Object':
-            runVid(video_path, request.form.get('slider'))
+            runVid(video_path, request.form.get('slider'), request.form.get('crowd1'))
 
         resize('detect/Finalresults.mp4', 0.5, 'detect/CFinalresults.mp4')
 
@@ -448,7 +471,7 @@ def process_video():
             heatmaper(0, request.form.get('slider1'))
         elif request.form.get('switchType') == 'Object':
             print(request.form.get('switchType'))
-            runVid(0, request.form.get('slider1'))
+            runVid(0, request.form.get('slider1'), request.form.get('crowd1'))
         resize('detect/Finalresults.mp4', 0.5, 'detect/CFinalresults.mp4')
 
         if y == 0:
@@ -487,11 +510,13 @@ def serve_processed_video1():
     path = 'detect'
     return send_from_directory(path, filename)
 
+
 @app.route('/detect/2CFinalresults.mp4')
 def serve_processed_video2():
     filename = 'CFinalresults.mp4'  # Specify the name of the processed video file
     path = 'detect'
     return send_from_directory(path, filename)
+
 
 @app.route('/detect/3CFinalresults.mp4')
 def serve_processed_video3():
