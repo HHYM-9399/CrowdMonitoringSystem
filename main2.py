@@ -524,7 +524,7 @@ def serve_processed_video3():
 
 @app.route('/Instruction.pdf')
 def manual():
-    filename = 'Instruction1.pdf'  # Specify the name of the processed video file
+    filename = 'Instruction Document Group 1.pdf'  # Specify the name of the processed video file
     path = ''
     return send_from_directory(path, filename)
 
